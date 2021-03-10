@@ -1,4 +1,4 @@
-# About
+% About
 
 This project was created as a project for ENG 402: Technical Writing at Washington State University Tri-Cities by Aron Powers. As part of an effort to create more awareness for computational tools, this webpage seeks to be a free, open-source way to learn about tools that make engineering students' lives easier. This project is developed for Dr. Ryan Learn of the Mathematics & Statistics department.
 
