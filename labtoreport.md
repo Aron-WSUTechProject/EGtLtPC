@@ -27,7 +27,7 @@ Let's say that you're an manufacturing engineer at a large diamond company, and 
 # Data Visualization with Matplotlib
 
 Boxplot
-![Boxplot Visualization](photos/boxplot.png)
+![Boxplot Visualization](./photos/boxPlot.png)
 
 Regression
-![Regression](photo/caratmodel.png)
+![Regression](./photos/caratModel.png)
