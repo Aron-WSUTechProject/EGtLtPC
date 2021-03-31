@@ -16,7 +16,9 @@ This article will use Python, a programming language created by Guido van Rossum
 
 For any installation, ensure that Python is added to PATH. PATH essentially maps a global command to your command prompt. Typically, if you were to access a program via the command line, you would need to drill down to the specific folder and run the file. With a PATH-mapped application, you are able to simply call it wherever you are in your file structure. It is necessary for applications like pip, the Python package manager, and Jupyter Labs, a convenient IDE (integrated development environment).
 
-On the graphical installers for Windows and Mac OS X, there should be a check box at the end of the installation that looks like this: ![PATH checkbox: courtesy of of https://pychill.info/about-pychill/](./photos/pythonPATH.jpg)
+On the graphical installers for Windows and Mac OS X, there should be a check box at the end of the installation that looks like this:
+
+![PATH checkbox: courtesy of of https://pychill.info/about-pychill/](./photos/pythonPATH.jpg)
 
 ## Python Packages
 
@@ -63,11 +65,11 @@ Let's say that you're an manufacturing engineer at a large diamond company, and 
 
 Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.
 
-![Jupyter Lab Notebook](./photos/journalSelect.png)
+![Selection menu for Jupyter Lab](./photos/journalSelect.png)
 
 Open the file with the .ipynb extension. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
 
-![Controls](./photos/controls.png)
+![A photo of the controls at the top of the code section in a notebook](./photos/controls.png)
 
 * Save the file
 * Create a new notebook
@@ -77,32 +79,9 @@ Open the file with the .ipynb extension. You should now be greeted by code on th
 * Run a cell
 * Interrupt the Python kernel
 * Restart the Python kernel and run all cells
-* Change a cell from Python code to Markdown or raw format
-
-It is sufficient enough run single cells at a time during normal development and while following the code provided unless significant changes have occurred across multiple cells.
-
-
+t is sufficient enough run single cells at a time unless significant changes have occurred across cells.
 ## Code
 
-Let's start with the first cell of the code.
-
-```py
-#Import necessary packages
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-```
-
-As the comment at the top of the code block suggests, this code cell imports necessary packages into the program. This tells Python to import specific packages, `matplotlib.pyplot`, `numpy`, and `pandas` as the aliases `plt`, `np`, and `pd` respectively. The code later on will heavily utilize these packages, so it saves time to alias them to something more simple.
-
-In the next cell, we import the data to begin analysis.
-
-```py
-#Reading in diamond data
-diamonds = pd.read_csv("diamonds.csv")
-uniqueCuts = diamonds["cut"].unique()
-print(uniqueCuts)
-```
 
 # Data Visualization with Matplotlib
 
