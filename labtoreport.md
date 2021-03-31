@@ -18,6 +18,8 @@ For any installation, ensure that Python is added to PATH. PATH essentially maps
 
 On the graphical installers for Windows and Mac OS X, there should be a check box at the end of the installation that looks like this: ![PATH checkbox: courtesy of of https://pychill.info/about-pychill/](./photos/pythonPATH.jpg)
 
+## Python Packages
+
 After getting the PATH variable set up properly and Python installed, it is necessary for the following packages to be installed:
 
 * numpy: This package adds better support for arrays and mathematical operations that can occur on arrays
@@ -55,9 +57,52 @@ With the advent of computers, gone are the days of needing to prep tables of dat
 
 # Processing Data
 
-Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.  
+## Getting the environment set up
+
+Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions. To get a copy of the data, create an account with Kaggle and download the CSV from the link.
+
+Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.
+
+![Jupyter Lab Notebook](./photos/journalSelect.png)
+
+Open the file with the .ipynb extension. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
+
+![Controls](./photos/controls.png)
+
+* Save the file
+* Create a new notebook
+* Cut selected cells
+* Copy selected cells
+* Paste cells from the clipboard
+* Run a cell
+* Interrupt the Python kernel
+* Restart the Python kernel and run all cells
+* Change a cell from Python code to Markdown or raw format
+
+It is sufficient enough run single cells at a time during normal development and while following the code provided unless significant changes have occurred across multiple cells.
 
 
+## Code
+
+Let's start with the first cell of the code.
+
+```py
+#Import necessary packages
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+```
+
+As the comment at the top of the code block suggests, this code cell imports necessary packages into the program. This tells Python to import specific packages, `matplotlib.pyplot`, `numpy`, and `pandas` as the aliases `plt`, `np`, and `pd` respectively. The code later on will heavily utilize these packages, so it saves time to alias them to something more simple.
+
+In the next cell, we import the data to begin analysis.
+
+```py
+#Reading in diamond data
+diamonds = pd.read_csv("diamonds.csv")
+uniqueCuts = diamonds["cut"].unique()
+print(uniqueCuts)
+```
 
 # Data Visualization with Matplotlib
 
