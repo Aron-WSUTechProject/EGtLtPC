@@ -16,9 +16,7 @@ This article will use Python, a programming language created by Guido van Rossum
 
 For any installation, ensure that Python is added to PATH. PATH essentially maps a global command to your command prompt. Typically, if you were to access a program via the command line, you would need to drill down to the specific folder and run the file. With a PATH-mapped application, you are able to simply call it wherever you are in your file structure. It is necessary for applications like pip, the Python package manager, and Jupyter Labs, a convenient IDE (integrated development environment).
 
-On the graphical installers for Windows and Mac OS X, there should be a check box at the end of the installation that looks like this:
-
-![PATH checkbox: courtesy of of https://pychill.info/about-pychill/](./photos/pythonPATH.jpg)
+On the graphical installers for Windows and Mac OS X, there should be a check box at the end of the installation that looks like this: ![](./photos/pythonPATH.jpg "PATH checkbox during install: courtesy of https://pychill.info/about-pychill/")
 
 ## Python Packages
 
@@ -65,11 +63,11 @@ Let's say that you're an manufacturing engineer at a large diamond company, and 
 
 Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.
 
-![Selection menu for Jupyter Lab](./photos/journalSelect.png)
+![](./photos/journalSelect.png "Jupyter Lab Notebook")
 
 Open the file with the .ipynb extension. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
 
-![A photo of the controls at the top of the code section in a notebook](./photos/controls.png)
+![](./photos/controls.png "Controls")
 
 * Save the file
 * Create a new notebook
@@ -85,6 +83,6 @@ t is sufficient enough run single cells at a time unless significant changes hav
 
 # Data Visualization with Matplotlib
 
-![Boxplot Visualization](./photos/boxPlot.png)
+![](./photos/boxPlot.png "Boxplot Visualization")
 
-![Regression](./photos/caratModel.png)
+![](./photos/caratModel.png "Regression Visualization")
