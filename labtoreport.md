@@ -77,9 +77,73 @@ Open the file with the .ipynb extension. You should now be greeted by code on th
 * Run a cell
 * Interrupt the Python kernel
 * Restart the Python kernel and run all cells
-t is sufficient enough run single cells at a time unless significant changes have occurred across cells.
-## Code
 
+As a rule of thumb, it is typically sufficient to run single cells at a time unless significant changes have occurred across cells. This is why using a Jupyter Lab session can be helpful in the process of creating code.
+
+## Code Breakdown
+
+To start with, we'll look at the first cell
+
+```python
+#Import necessary packages
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+```
+
+The function of this cell is to call in necessary packages for the analysis. It aliases `matplotlib.pyplot` as `plt, `numpy` as `np, and `pandas` as `pd`. This is helpful, as in order to call these libraries, their name has to be written each time, eliminating any unnecessary keystrokes.
+
+The second cell reads as follows:
+
+```python
+#Reading in diamond data 
+diamonds = pd.read_csv("diamonds.csv")
+uniqueCuts = diamonds["cut"].unique()
+print(uniqueCuts)
+```
+
+This cell tells the computer to read the diamond data (labeled as `diamonds.csv` on my computer) and assign it to the variable `diamonds`. It is important that the file is in the same directory as where the Jupyter Lab instance was started; otherwise, simply inputting the name of the file as seen in the code block will not work.
+
+After pulling the CSV file from the hard disk, the unique types of cuts are assigned as `uniqueCuts`. Say instead we wanted the unique carat values, we can replace `uniqueCuts = diamonds["cut"].unique()` with `uniqueCarat = diamonds["carat"].unique()`.
+
+Finally, after those values are written to a variable, they are then printed. When printing the output, we receive the following result:
+
+```
+['Ideal' 'Premium' 'Good' 'Very Good' 'Fair]
+```
+
+This will be helpful later on. If we wish to characterize our data by the cut quality, we'll know which unique factors are available.
+
+Now that we've got the raw data loaded into memory, we'll need to do some work to extract out the bits we want. The next cell shows how that can be achieved:
+
+```python
+#Cleaning data to have diamond info per cut
+fair = diamonds[diamonds["cut"] == "Fair"].to_numpy()
+fairP = fair[:,7]
+good = diamonds[diamonds["cut"] == "Good"].to_numpy()
+goodP = good[:,7]
+veryg = diamonds[diamonds["cut"] == "Very Good"].to_numpy()
+verygP = veryg[:,7]
+prem = diamonds[diamonds["cut"] == "Premium"].to_numpy()
+premP = prem[:,7]
+ideal = diamonds[diamonds["cut"] == "Ideal"].to_numpy()
+idealP = ideal[:,7]
+```
+
+It may seem there is a lot going on at first glance; however, when distilled to its roots, has only two main commands running on different parts of our data. Let's take this a line a time
+
+```python
+fair = diamonds[diamonds["cut"] == "Fair"].to_numpy()
+```
+
+In general, this command is telling Python to look in the `diamonds` dataframe and only take the rows of data where the `cut` column is equal to one of our factors, `"Fair"`. This then creates a dataframe that only contains information about diamonds that have a `"Fair"` value for the `"cut"` column.
+
+```python
+fairP = fair[:,7]
+```
+This line assigns a new variable, `fairP`, to the eigth column of the `fair` dataframe. If you are confused as to why it is the eigth column, remember that arrays are normally have 0 defined as the starting index.
+
+If you observe the rest of the lines in the code block, you will notice the same commands are repeated but with different cut qualities. While it is possible to utilize a loop to simplify the code, I wrote it this way so that it is easier to see what exactly is going on without the abstraction of a loop. 
 
 # Data Visualization with Matplotlib
 
