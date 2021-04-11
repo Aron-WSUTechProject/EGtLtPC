@@ -1,7 +1,5 @@
 % From Experiment to Report: Dealing with Labs in Python
 
-[Home](index.html)
-
 # Introduction and Motivation
 
 Scientists and engineers deal with data every day in their work. Whether it be test results from an experiment or data collected in the field, they are required to process data and present their analysis in a concise, clean format. This guide seeks to provide information on best practices for handling data in a lab or experiment all the way from data  collection to the final report. To help demonstrate these techniques, some sample data will be provided and worked on at each step. If you would like to follow the code along in Jupyter Labs, here is a [link to the Jupyter Lab file](./code/diamondBook.ipynb) that I created. In addition, a PDF version can be viewed [here](./code/diamondBook.pdf). 
@@ -25,7 +23,7 @@ After getting the PATH variable set up properly and Python installed, it is nece
 * numpy: This package adds better support for arrays and mathematical operations that can occur on arrays
 * matplotlib: This package adds "MATLAB style" plotting to Python. It allows for high quality figures and graphical representations of data to be made.
 * pandas: This package adds support for data frames, a type of data structure built with data and statistical analysis in mind.
-* (OPTIONAL) jupyterlab: This package adds Jupyter Lab, a web-based IDE that is structured like a notebook. It allows for blocks of code to be run without needing to have the entire program working along in-line printing of figures. It is not a necessary package; however, the code attached at the top of the page was written as a Jupyter Notebook (the filetype Jupyter Labs uses).
+* jupyterlab: This package adds Jupyter Lab, a web-based IDE that is structured like a notebook. It allows for blocks of code to be run without needing to have the entire program working along in-line printing of figures. It is not a necessary package; however, the code attached at the top of the page was written as a Jupyter Notebook (the filetype Jupyter Labs uses).
 
 Using your command line, you can install these packages by entering the following command:
 
@@ -55,11 +53,9 @@ One of the most important steps in an experiment is collecting data in a format 
 
 With the advent of computers, gone are the days of needing to prep tables of data on paper. A CSV file, or comma separated value file, is a comma-delimited text document that is extensible across numerous programs. Spreadsheet programs such as Microsoft Excel, Google Sheets, LibreOffice Calc, and Apple Numbers are able to operate on these files while also being able to be edited from a text editor like Notepad or Vim.
 
-# Processing Data
+# Getting the environment set up
 
-## Getting the environment set up
-
-Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds) that can also be obtained [here](./code/diamonds.csv). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions. To get a copy of the data, create an account with Kaggle and download the CSV from the link.
+Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds) that can also be obtained [here](./code/diamonds.csv). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.
 
 Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.
 
@@ -91,7 +87,7 @@ import numpy as np
 import pandas as pd
 ```
 
-The function of this cell is to call in necessary packages for the analysis. It aliases `matplotlib.pyplot` as `plt, `numpy` as `np, and `pandas` as `pd`. This is helpful, as in order to call these libraries, their name has to be written each time, eliminating any unnecessary keystrokes.
+The function of this cell is to call in necessary packages for the analysis. It aliases `matplotlib.pyplot` as `plt`, `numpy` as `np`, and `pandas` as `pd`. This is helpful, as in order to call these libraries, their name has to be written each time, eliminating any unnecessary keystrokes.
 
 The second cell reads as follows:
 
@@ -222,7 +218,7 @@ $$
 f(x) = \beta_1 x^2 + \beta_2 x + \beta_0
 $$
 
-where $f(x)$ represents the price of the diamond, $x$ being the carat of the diamond, and $\beta_x$ being the constant each term is multiplied by. To do this, we would leverage the SciPy library. To do this, it would be
+where $f(x)$ represents the price of the diamond, $x$ being the carat of the diamond, and $\beta_x$ being the constant each term is multiplied by. To do this, we would leverage the NumPy library. To do this, it would be
 
 ```python
 caratFit = np.polyfit(carat,price,2)

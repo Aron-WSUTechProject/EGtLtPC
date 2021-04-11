@@ -215,7 +215,6 @@
 <header id="title-block-header">
 <h1 class="title">From Experiment to Report: Dealing with Labs in Python</h1>
 </header>
-<p><a href="index.html">Home</a></p>
 <h1 id="introduction-and-motivation">Introduction and Motivation</h1>
 <p>Scientists and engineers deal with data every day in their work. Whether it be test results from an experiment or data collected in the field, they are required to process data and present their analysis in a concise, clean format. This guide seeks to provide information on best practices for handling data in a lab or experiment all the way from data collection to the final report. To help demonstrate these techniques, some sample data will be provided and worked on at each step. If you would like to follow the code along in Jupyter Labs, here is a <a href="./code/diamondBook.ipynb">link to the Jupyter Lab file</a> that I created. In addition, a PDF version can be viewed <a href="./code/diamondBook.pdf">here</a>.</p>
 <h1 id="python-information">Python Information</h1>
@@ -233,7 +232,7 @@
 <li>numpy: This package adds better support for arrays and mathematical operations that can occur on arrays</li>
 <li>matplotlib: This package adds “MATLAB style” plotting to Python. It allows for high quality figures and graphical representations of data to be made.</li>
 <li>pandas: This package adds support for data frames, a type of data structure built with data and statistical analysis in mind.</li>
-<li>(OPTIONAL) jupyterlab: This package adds Jupyter Lab, a web-based IDE that is structured like a notebook. It allows for blocks of code to be run without needing to have the entire program working along in-line printing of figures. It is not a necessary package; however, the code attached at the top of the page was written as a Jupyter Notebook (the filetype Jupyter Labs uses).</li>
+<li>jupyterlab: This package adds Jupyter Lab, a web-based IDE that is structured like a notebook. It allows for blocks of code to be run without needing to have the entire program working along in-line printing of figures. It is not a necessary package; however, the code attached at the top of the page was written as a Jupyter Notebook (the filetype Jupyter Labs uses).</li>
 </ul>
 <p>Using your command line, you can install these packages by entering the following command:</p>
 <pre><code>python3 -m pip install numpy matplotlib pandas</code></pre>
@@ -246,9 +245,8 @@
 <h1 id="collecting-data">Collecting Data</h1>
 <p>One of the most important steps in an experiment is collecting data in a format that allows the experimenter to easily access and perform analysis on the data. In the days before computer tools for data processing, this took the form of pen and paper. While this style of data acquisition is simple and requires no technical knowledge whatsoever, it is unsuited for data sets of any appreciable size. There is a reason that writing sentences over and over in school was a punishment!</p>
 <p>With the advent of computers, gone are the days of needing to prep tables of data on paper. A CSV file, or comma separated value file, is a comma-delimited text document that is extensible across numerous programs. Spreadsheet programs such as Microsoft Excel, Google Sheets, LibreOffice Calc, and Apple Numbers are able to operate on these files while also being able to be edited from a text editor like Notepad or Vim.</p>
-<h1 id="processing-data">Processing Data</h1>
-<h2 id="getting-the-environment-set-up">Getting the environment set up</h2>
-<p>Let’s say that you’re an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we’ll be using the <a href="https://www.kaggle.com/shivam2503/diamonds">‘Diamonds’ dataset from Kaggle</a> that can also be obtained <a href="./code/diamonds.csv">here</a>. This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions. To get a copy of the data, create an account with Kaggle and download the CSV from the link.</p>
+<h1 id="getting-the-environment-set-up">Getting the environment set up</h1>
+<p>Let’s say that you’re an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we’ll be using the <a href="https://www.kaggle.com/shivam2503/diamonds">‘Diamonds’ dataset from Kaggle</a> that can also be obtained <a href="./code/diamonds.csv">here</a>. This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.</p>
 <p>Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run <code>jupyter lab</code> to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.</p>
 <p><img src="./photos/journalSelect.png" title="Jupyter Lab Notebook" /></p>
 <p>Open the file with the .ipynb extension. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:</p>
@@ -270,7 +268,7 @@
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
-<p>The function of this cell is to call in necessary packages for the analysis. It aliases <code>matplotlib.pyplot</code> as <code>plt,</code>numpy<code>as</code>np, and <code>pandas</code> as <code>pd</code>. This is helpful, as in order to call these libraries, their name has to be written each time, eliminating any unnecessary keystrokes.</p>
+<p>The function of this cell is to call in necessary packages for the analysis. It aliases <code>matplotlib.pyplot</code> as <code>plt</code>, <code>numpy</code> as <code>np</code>, and <code>pandas</code> as <code>pd</code>. This is helpful, as in order to call these libraries, their name has to be written each time, eliminating any unnecessary keystrokes.</p>
 <p>The second cell reads as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Reading in diamond data </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>diamonds <span class="op">=</span> pd.read_csv(<span class="st">&quot;diamonds.csv&quot;</span>)</span>
@@ -337,7 +335,7 @@ for patch, color in zip(BoxPlot[&#39;boxes&#39;, colors):
 <p>The next portion of code is exactly the same as the alpha change and figure/subplot as described in the boxplot generation portion.</p>
 <p>Let’s assume that a diamond’s price could be modeled by the square of the carat. As an equation, we would have</p>
 <p><span class="math display"><em>f</em>(<em>x</em>) = <em>β</em><sub>1</sub><em>x</em><sup>2</sup> + <em>β</em><sub>2</sub><em>x</em> + <em>β</em><sub>0</sub></span></p>
-<p>where <span class="math inline"><em>f</em>(<em>x</em>)</span> represents the price of the diamond, <span class="math inline"><em>x</em></span> being the carat of the diamond, and <span class="math inline"><em>β</em><sub><em>x</em></sub></span> being the constant each term is multiplied by. To do this, we would leverage the SciPy library. To do this, it would be</p>
+<p>where <span class="math inline"><em>f</em>(<em>x</em>)</span> represents the price of the diamond, <span class="math inline"><em>x</em></span> being the carat of the diamond, and <span class="math inline"><em>β</em><sub><em>x</em></sub></span> being the constant each term is multiplied by. To do this, we would leverage the NumPy library. To do this, it would be</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>caratFit <span class="op">=</span> np.polyfit(carat,price,<span class="dv">2</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(caratFit)</span></code></pre></div>
 <p>This command outputs an array to <code>caratFit</code> using <code>carat</code> as the predictor variable, <code>price</code> as the response variable, and the <code>2</code> representing the degree of polynomial being used. <code>polyfit</code>, as the name may imply, creates a polynomial fit given the degree and appropriate variables. Then, they are printed to give an indication of what each coefficient is. From the polyfit, the following equation is made:</p>
