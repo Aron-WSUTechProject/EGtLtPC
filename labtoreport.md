@@ -80,7 +80,7 @@ Open the file with the .ipynb extension. You should now be greeted by code on th
 
 As a rule of thumb, it is typically sufficient to run single cells at a time unless significant changes have occurred across cells. This is why using a Jupyter Lab session can be helpful in the process of creating code.
 
-## Code Breakdown
+# Code Breakdown
 
 To start with, we'll look at the first cell
 
@@ -143,10 +143,127 @@ fairP = fair[:,7]
 ```
 This line assigns a new variable, `fairP`, to the eigth column of the `fair` dataframe. If you are confused as to why it is the eigth column, remember that arrays are normally have 0 defined as the starting index.
 
-If you observe the rest of the lines in the code block, you will notice the same commands are repeated but with different cut qualities. While it is possible to utilize a loop to simplify the code, I wrote it this way so that it is easier to see what exactly is going on without the abstraction of a loop. 
+If you observe the rest of the lines in the code block, you will notice the same commands are repeated but with different cut qualities. While it is possible to utilize a loop to simplify the code, it is written this way so that it is easier to see what exactly is going on without the abstraction of a loop. 
 
-# Data Visualization with Matplotlib
+# Boxplot Generation
+
+With the data cleaned, it is now time to use Matplotlib to start visualizing the data. Let's create a boxplot, a type of data visualization plot that visually shows how the data is spread in a set of data.
+
+```python
+#Boxplot Generation
+boxData = [fairP,goodP,verygP,premP,idealP]
+```
+
+All that is happening in this block is that the data that was cleaned in the previous section is being combined into one main set of data. Later, the boxplot code will be made simpler by having our data together into one object.
+
+```python
+fig, axis = plt.subplots()
+```
+
+What is portion of the code block is doing is creating a figure object and one subplot. Essentially, a figure object describes the "frame" of a plot, and the axis object describes what is "drawn". More complex plots will manipulate these objects to create a narrowly-defined effect, but for the purposes of this article, the current setup is more than enough.
+
+```python3
+BoxPlot = axis.boxplot(boxData, patch_artist = True, showfliers = False)
+fig.patch.set_alpha(1.0)
+plt.xticks([1,2,3,4],["Fair","Good","Very Good","Premium","Ideal"])
+plt.ylabel("Price [USD]")
+plt.xlabel("Diamond Quality")
+plt.title("Price Distribution of Different Diamond Qualities")
+```
+
+There's a lot in this portion of the code, so let's break it down. First, a variable `BoxPlot` is created to represent the boxplot created. It has the arguments `boxData`, `patch_artist = True`, and `showfliers = False`. Recall that `boxData` is the variable we made to group all of the cleaned data together. `patch_artist = True` allows Matplotlib to hatch each boxplot with a different color, and `showfliers = False` does as the name implies: hides any outliers beyond the whiskers.
+
+Next, a command is called on the figure, `fig.patch.set_alpha(1.0)`. This sets the alpha level, more colloquially known as the opacity, to 1.0; thus, the figure is opaque. By default, Matplotlib will make the area beyond the plot transparent so that it may fit on backgrounds that don't match the figure color. This corrects that behavior; otherwise, viewing said plot in an image viewer may be difficult as transparent areas are rendered differently.
+
+Finally, there are some commands that make some aesthetic changes. `xticks` is remapping the five boxplots from their numerical order to a label that is more human friendly. `1` is paired with `"Fair"`,`2` with `"Good"`, and so on. `ylabel`, `xlabel`, and `title` all change the labels seen on the y axis, x axis, and the title. They accept a string input, so they are fairly straightforward.
+
+Next, let's color the boxplots so they stand out from one another.
+
+```python3
+colors = ['#0000FF', '#00FF00', '#FFFF00', '#FF00FF', '#FF0000']
+
+for patch, color in zip(BoxPlot['boxes', colors):
+	patch.set_facecolor(color)
+```  
+
+The first variable, `colors`, creates a list of hexadecimal color codes that are to be used for each consecutive box. A nice utility for finding hex colors can be found at [this website](https://www.color-hex.com/).
+
+The next portion is a bit confusing, but in general, the for loop is telling Matplotlib to iterate over the number of individual boxplots in our `BoxPlot` figure and patch their face color with the provided colors.
+
+To wrap up this boxplot, let's display and save the figure.
+
+```python
+plt.savefig('boxPlot.png', dpi = 300)
+plt.show()
+```
+
+These two lines will save the figure as `boxPlot.png` at an output DPI of 300 then display the plot just created. The plot should look like this:
 
 ![](./photos/boxPlot.png "Boxplot Visualization")
 
+# Scatter Plot with Poly Fit
+
+Now that we've got some information on the overall distribution of price per diamond quality, let's try and make a predictor of price based on carat. To do that, we'll need to first gather some data for both of these.
+
+```python
+carat = diamonds["carat"].to_numpy()
+price = diamonds["price"].to_numpy()
+print(carat)
+print(price)
+```
+
+Like in the previous sections, we're using the `diamonds` dataframe to extract the price and carat information out of the CSV. Then, the `carat` and `price` variables are printed. Be careful if you are doing this inside of a terminal. There are a LOT of data points. The reason this is useful is that it helps give a general sense of how large the plot should be.
+
+The next portion of code is exactly the same as the alpha change and figure/subplot as described in the boxplot generation portion.
+
+Let's assume that a diamond's price could be modeled by the square of the carat. As an equation, we would have
+
+$$
+f(x) = \beta_1 x^2 + \beta_2 x + \beta_0
+$$
+
+where $f(x)$ represents the price of the diamond, $x$ being the carat of the diamond, and $\beta_x$ being the constant each term is multiplied by. To do this, we would leverage the SciPy library. To do this, it would be
+
+```python
+caratFit = np.polyfit(carat,price,2)
+print(caratFit)
+```
+
+This command outputs an array to `caratFit` using `carat` as the predictor variable, `price` as the response variable, and the `2` representing the degree of polynomial being used. `polyfit`, as the name may imply, creates a polynomial fit given the degree and appropriate variables. Then, they are printed to give an indication of what each coefficient is. From the polyfit, the following equation is made:
+
+$$
+f(x) = 507.91x^2 + 6677.02x^2 - 1832.58
+$$
+
+Now that there's an equation gathered, let's see how well it fits by plotting it along with a scatter plot of price and carat. To do so, we'll generate some data for our fit first.
+
+```python
+xvals = np.linspace(0,3,301)
+axis.plot(xvals,caratFit[0]*xvals**2 + caratFit[1]*xvals + caratFit[2], color = 'red')
+plt.scatter(carat,price)
+```
+
+In the above section, `linspace()` is a function that takes a beginning point, an endpoint, and the number of points to generate in a linear fashion between them. In this instance, 0-3 was chosen. Then, a plot was created for this new fit with `xvals` being the x data, and having the coefficients from the fit multiply each respective term for the y data. In addition, the line is made red by `color = red`. Then, a scatter plot using the carat and price are made.
+
+Now that we've got the scatter plot and fitted line plotted, the plot is cleaned up a little
+
+```python
+plt.xlabel("Carat")
+plt.ylabel("Price")
+plt.ylim([0,21000])
+plt.title("Carat as Diamond Price Predicition Model")
+plt.legend(["$y = 507.91x^2 + 6677.02x - 1832.58$"])
+plt.savefig('caratModel.png',dpi = 300)
+plt.show()
+```
+
+Similar to the box plot, `xlabel` and `ylabel` add labels to our axes, `title` adds a nice title to the top, `savefig` saves the figure, and `show` presents the plot. The only new portions are the `ylim` and `legend` inclusions. Sometimes, Matplotlib's automatic axis limits are not the best. `plt.ylim([0,21000])` manually assigns the y axis to go from 0 to 21,000. The other new command, `plt.legend()` creates a nice legend in the plot. Simply pass a string into the function, and it will add a box to the plot with the added legend.
+
+After all is said and done, the plot and regression should look like:
+
 ![](./photos/caratModel.png "Regression Visualization")
+
+# Conclusion
+
+Python is a free, open-source programming language that has extensive libraries for plotting, data analysis, and dealing with data in general.
+
