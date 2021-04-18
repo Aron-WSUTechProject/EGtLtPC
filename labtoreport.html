@@ -218,7 +218,7 @@
 <h1 id="introduction-and-motivation">Introduction and Motivation</h1>
 <p>Scientists and engineers deal with data every day in their work. Whether it be test results from an experiment or data collected in the field, they are required to process data and present their analysis in a concise, clean format. This guide seeks to provide information on best practices for handling data in a lab or experiment all the way from data collection to the final report. To help demonstrate these techniques, some sample data will be provided and worked on at each step. If you would like to follow the code along in Jupyter Labs, here is a <a href="./code/diamondBook.ipynb">link to the Jupyter Lab file</a> that I created. In addition, a PDF version can be viewed <a href="./code/diamondBook.pdf">here</a>.</p>
 <h1 id="python-information">Python Information</h1>
-<p>This article will use Python, a programming language created by Guido van Rossum. To get the most out of the article, it is recommended to follow along using a live version of Python. Python is a freely available programming language that can be obtained on all operating systems. Below is a list of resources to create a working install of Python on your respective operating system:</p>
+<p>This article will use Python, a programming language created by Guido van Rossum. To get the most out of the article, it is recommended to follow along using a live version of Python. Python is a freely available programming language that can be obtained on all operating systems. Below is a list of resources to create a working install of Python on your respective operating system. Make sure you read about Python needing to be installed to PATH. Information is located after the bullet points below.</p>
 <ul>
 <li>Windows: Visit the <a href="https://www.python.org/downloads/windows">Python Releases for Windows</a> page of the Python website, and download the latest Python 3 release. At the time of this being written, it is Python 3.9.2.</li>
 <li>macOS: Visit the <a href="https://www.python.org/downloads/mac-osx/">Python Releases for Mac OS X</a> page of the Python website, and download the latest Python 3 release. At the time of this being written, it is Python 3.9.2.</li>
@@ -234,10 +234,10 @@
 <li>pandas: This package adds support for data frames, a type of data structure built with data and statistical analysis in mind.</li>
 <li>jupyterlab: This package adds Jupyter Lab, a web-based IDE that is structured like a notebook. It allows for blocks of code to be run without needing to have the entire program working along in-line printing of figures. It is not a necessary package; however, the code attached at the top of the page was written as a Jupyter Notebook (the filetype Jupyter Labs uses).</li>
 </ul>
-<p>Using your command line, you can install these packages by entering the following command:</p>
-<pre><code>python3 -m pip install numpy matplotlib pandas</code></pre>
+<p>To actually install these packages, the command line/terminal for your operating system will need to be used. Open it up and run the following commands inside of it:</p>
+<pre><code>python -m pip install numpy matplotlib pandas</code></pre>
 <p>If you wish to also install Jupyter Labs, the command would look like this:</p>
-<pre><code>python3 -m pip install numpy matplotlib pandas jupyterlab</code></pre>
+<pre><code>python -m pip install numpy matplotlib pandas jupyterlab</code></pre>
 <p>pip is the default package manager for Python. Essentially, this tells pip to fetch those packages and install them to your Python install. Once this is done, if you elected to install the <code>jupyterlab</code> package, type the following command to open up a Jupyer Notebook:</p>
 <pre><code>jupyter lab</code></pre>
 <p>This command will open a Jupyter Lab instance wherever the working directory of your command line is. If you’d like to work out of a specific folder, it is necessary to path there before running Jupyter Lab.</p>
@@ -247,9 +247,9 @@
 <p>With the advent of computers, gone are the days of needing to prep tables of data on paper. A CSV file, or comma separated value file, is a comma-delimited text document that is extensible across numerous programs. Spreadsheet programs such as Microsoft Excel, Google Sheets, LibreOffice Calc, and Apple Numbers are able to operate on these files while also being able to be edited from a text editor like Notepad or Vim.</p>
 <h1 id="getting-the-environment-set-up">Getting the environment set up</h1>
 <p>Let’s say that you’re an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we’ll be using the <a href="https://www.kaggle.com/shivam2503/diamonds">‘Diamonds’ dataset from Kaggle</a> that can also be obtained <a href="./code/diamonds.csv">here</a>. This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.</p>
-<p>Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run <code>jupyter lab</code> to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.</p>
+<p>Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Open the location where the CSV and Jupyter Notebook are located, and copy the address of the folder. Then, type <code>cd your/directory/here</code> where <code>your/directory/here</code> is the location of your folder. Once you have done so, run <code>jupyter lab</code> to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory. The directory on the left of your Jupyter Lab session should look like the following:</p>
 <p><img src="./photos/journalSelect.png" title="Jupyter Lab Notebook" /></p>
-<p>Open the file with the .ipynb extension. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:</p>
+<p>Open the file with the .ipynb extension, <code>diamondBook.ipynb</code>. If you have not downloaded and placed the it in the folder created, it can be downloaded <a href="./code/diamondBook.ipynb">here</a> You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:</p>
 <p><img src="./photos/controls.png" title="Controls" /></p>
 <ul>
 <li>Save the file</li>
@@ -263,7 +263,7 @@
 </ul>
 <p>As a rule of thumb, it is typically sufficient to run single cells at a time unless significant changes have occurred across cells. This is why using a Jupyter Lab session can be helpful in the process of creating code.</p>
 <h1 id="code-breakdown">Code Breakdown</h1>
-<p>To start with, we’ll look at the first cell</p>
+<p>To start with, we’ll look at the first cell of <a href="./code/diamondBook.ipynb">the provided notebook</a></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import necessary packages</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -357,6 +357,7 @@ for patch, color in zip(BoxPlot[&#39;boxes&#39;, colors):
 <p>After all is said and done, the plot and regression should look like:</p>
 <p><img src="./photos/caratModel.png" title="Regression Visualization" /></p>
 <h1 id="conclusion">Conclusion</h1>
-<p>Python is a free, open-source programming language that has extensive libraries for plotting, data analysis, and dealing with data in general.</p>
+<p>Python is a free, open-source programming language that has extensive libraries for plotting, data analysis, and dealing with data in general. Having free software that enhances people’s daily life is essential. With the provided code, you now have a template to create high-quality plots with Python and improve the quality of your papers and presentations.</p>
+<p><a href="./index.html">Home</a></p>
 </body>
 </html>

@@ -6,7 +6,7 @@ Scientists and engineers deal with data every day in their work. Whether it be t
 
 # Python Information
 
-This article will use Python, a programming language created by Guido van Rossum. To get the most out of the article, it is recommended to follow along using a live version of Python. Python is a freely available programming language that can be obtained on all operating systems. Below is a list of resources to create a working install of Python on your respective operating system:
+This article will use Python, a programming language created by Guido van Rossum. To get the most out of the article, it is recommended to follow along using a live version of Python. Python is a freely available programming language that can be obtained on all operating systems. Below is a list of resources to create a working install of Python on your respective operating system. Make sure you read about Python needing to be installed to PATH. Information is located after the bullet points below.
 
 * Windows: Visit the [Python Releases for Windows](https://www.python.org/downloads/windows) page of the Python website, and download the latest Python 3 release. At the time of this being written, it is Python 3.9.2.
 * macOS: Visit the [Python Releases for Mac OS X](https://www.python.org/downloads/mac-osx/) page of the Python website, and download the latest Python 3 release. At the time of this being written, it is Python 3.9.2.
@@ -25,16 +25,16 @@ After getting the PATH variable set up properly and Python installed, it is nece
 * pandas: This package adds support for data frames, a type of data structure built with data and statistical analysis in mind.
 * jupyterlab: This package adds Jupyter Lab, a web-based IDE that is structured like a notebook. It allows for blocks of code to be run without needing to have the entire program working along in-line printing of figures. It is not a necessary package; however, the code attached at the top of the page was written as a Jupyter Notebook (the filetype Jupyter Labs uses).
 
-Using your command line, you can install these packages by entering the following command:
+To actually install these packages, the command line/terminal for your operating system will need to be used. Open it up and run the following commands inside of it:
 
 ```
-python3 -m pip install numpy matplotlib pandas
+python -m pip install numpy matplotlib pandas
 ```
 
 If you wish to also install Jupyter Labs, the command would look like this:
 
 ```
-python3 -m pip install numpy matplotlib pandas jupyterlab
+python -m pip install numpy matplotlib pandas jupyterlab
 ```
 
 pip is the default package manager for Python. Essentially, this tells pip to fetch those packages and install them to your Python install. Once this is done, if you elected to install the `jupyterlab` package, type the following command to open up a Jupyer Notebook:
@@ -57,11 +57,11 @@ With the advent of computers, gone are the days of needing to prep tables of dat
 
 Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds) that can also be obtained [here](./code/diamonds.csv). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.
 
-Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory.
+Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Open the location where the CSV and Jupyter Notebook are located, and copy the address of the folder. Then, type `cd your/directory/here` where `your/directory/here` is the location of your folder. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory. The directory on the left of your Jupyter Lab session should look like the following:
 
 ![](./photos/journalSelect.png "Jupyter Lab Notebook")
 
-Open the file with the .ipynb extension. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
+Open the file with the .ipynb extension, `diamondBook.ipynb`. If you have not downloaded and placed the it in the folder created, it can be downloaded [here](./code/diamondBook.ipynb) You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
 
 ![](./photos/controls.png "Controls")
 
@@ -78,7 +78,7 @@ As a rule of thumb, it is typically sufficient to run single cells at a time unl
 
 # Code Breakdown
 
-To start with, we'll look at the first cell
+To start with, we'll look at the first cell of [the provided notebook](./code/diamondBook.ipynb)
 
 ```python
 #Import necessary packages
@@ -261,5 +261,7 @@ After all is said and done, the plot and regression should look like:
 
 # Conclusion
 
-Python is a free, open-source programming language that has extensive libraries for plotting, data analysis, and dealing with data in general.
+Python is a free, open-source programming language that has extensive libraries for plotting, data analysis, and dealing with data in general. Having free software that enhances people's daily life is essential. With the provided code, you now have a template to create high-quality plots with Python and improve the quality of your papers and presentations.
+
+[Home](./index.html)
 
