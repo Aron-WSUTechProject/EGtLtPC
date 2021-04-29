@@ -65,7 +65,7 @@ Create a folder somewhere on your hard disk that contains the previously mention
 
 ![](./photos/journalSelect.png "Jupyter Lab Notebook")
 
-Open the file with the .ipynb extension, `diamondBook.ipynb`.You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
+Open the file with the .ipynb extension, `diamondBook.ipynb`. You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
 
 ![](./photos/controls.png "Controls")
 
