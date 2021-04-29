@@ -8,7 +8,7 @@ Thank you for taking interest in "The Engineer's Guide to Leveraging the Persona
 
 In addition, the content is hosted on GitHub under the GPL3 license, allowing users to download, clone, fork, and share the entire project. This setup is conductive to user modification and offline viewing. Another added benefit of the hosting medium is that users can also contribute directly to the live project via commits, allowing experienced users to share their knowledge or provide editorial support.
 
-Once again, I thank you for taking interest in the site. Computers are a underutilized tool not because they are incapable of work; rather, it is the case that there simply is not enough awareness about how they can help, a problem this site seeks to fix. If you have any questions about the project or want to know how to contribute, please feel free to contact the repository host on GitHub. Additionally, you can send an e-mail to WSUtechproject2021@protonmail.ch.
+Once again, I thank you for taking interest in the site. Computers are a underutilized tool not because they are incapable of work; rather, it is the case that there simply is not enough awareness about how they can help, a problem this site seeks to fix. I strongly urge you to view the content on this website if you wish to learn more about how computers can help your daily life as someone in STEM. If you have any questions about the project or want to know how to contribute, please feel free to contact the repository host on GitHub. Additionally, you can send an e-mail to WSUtechproject2021@protonmail.ch.
 
 Sincerely,
 
