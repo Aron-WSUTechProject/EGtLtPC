@@ -59,7 +59,9 @@ In the next section, we'll be using Python to operate on CSV files. Not only do 
 
 Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds) that can also be obtained [here](./code/diamonds.csv). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.
 
-Create a folder somewhere on your hard disk that contains the previously mentioned CSV. Additionally, place the iPython Notebook provided [here](./code/diamondBook.ipynb) Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Open the location where the CSV and Jupyter Notebook are located, and copy the address of the folder. Then, type `cd your/directory/here` where `your/directory/here` is the location of your folder. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory. The directory on the left of your Jupyter Lab session should like the following:
+Create a folder somewhere on your hard disk that contains the previously mentioned CSV. Additionally, place the iPython Notebook provided [here](./code/diamondBook.ipynb) inside the same folder.
+
+ Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Open the location where the CSV and Jupyter Notebook are located, and copy the address of the folder. Then, type `cd your/directory/here` where `your/directory/here` is the location of your folder. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory. The directory on the left of your Jupyter Lab session should like the following:
 
 ![](./photos/journalSelect.png "Jupyter Lab Notebook")
 
