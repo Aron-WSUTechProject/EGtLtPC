@@ -1,6 +1,8 @@
 % The Engineer's Guide to Leveraging the Personal Computer
 
-Welcome to **The Engineer's Guide to Leveraging the Personal Computer**! Contained within this guide is information on computational tools to make the average engineering student's job much easier. Before viewing the topics in this guide, it is recommended that the [About](about.html) section is read. Happy hunting!
+Welcome to "The Engineer's Guide to Leveraging the Personal Computer!" Contained within this guide is information on computational tools to make the average STEM students' job much easier.
+
+Please read the [About](about.html) section to learn more about what this website is about. Thank you for your time!
 
 # Table of Contents
 
