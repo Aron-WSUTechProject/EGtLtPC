@@ -51,17 +51,19 @@ With the necessary packages together, it's time to start the process of taking d
 
 One of the most important steps in an experiment is collecting data in a format that allows the experimenter to easily access and perform analysis on the data. In the days before computer tools for data processing, this took the form of pen and paper. While this style of data acquisition is simple and requires no technical knowledge whatsoever, it is unsuited for data sets of any appreciable size. There is a reason that writing sentences over and over in school was a punishment!
 
-With the advent of computers, gone are the days of needing to prep tables of data on paper. A CSV file, or comma separated value file, is a comma-delimited text document that is extensible across numerous programs. Spreadsheet programs such as Microsoft Excel, Google Sheets, LibreOffice Calc, and Apple Numbers are able to operate on these files while also being able to be edited from a text editor like Notepad or Vim.
+With the advent of computers, gone are the days of needing to prep tables of data on paper. A CSV file, or comma separated value file, is a comma-delimited text document that is extensible across numerous programs. Spreadsheet programs such as Microsoft Excel, Google Sheets, LibreOffice Calc, and Apple Numbers are able to operate on these files while also being able to be edited from a text editor like Notepad or Vim.  
+
+In the next section, we'll be using Python to operate on CSV files. Not only do researchers usually provide data in a CSV format, but numerous government and public databates distribute only CSV files; therefore, knowing what it is and how to operate on one with Python is critical.
 
 # Getting the environment set up
 
 Let's say that you're an manufacturing engineer at a large diamond company, and you want to review diamond sales information your company has to obtain some insight into your product and perform cost analysis on the plant. To show how to process data, we'll be using the ['Diamonds' dataset from Kaggle](https://www.kaggle.com/shivam2503/diamonds) that can also be obtained [here](./code/diamonds.csv). This dataset contains approximately 50,000 separate diamond entries with info including their price, carat, cut quality, and physical dimensions.
 
-Create a folder somewhere on your hard disk that contains the previously mentioned CSV. You may also choose to place the iPython Notebook in there as well. Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Open the location where the CSV and Jupyter Notebook are located, and copy the address of the folder. Then, type `cd your/directory/here` where `your/directory/here` is the location of your folder. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory. The directory on the left of your Jupyter Lab session should look like the following:
+Create a folder somewhere on your hard disk that contains the previously mentioned CSV. Additionally, place the iPython Notebook provided [here](./code/diamondBook.ipynb) Open a terminal (command prompt) and navigate to the folder that contains the CSV file and the notebook. Open the location where the CSV and Jupyter Notebook are located, and copy the address of the folder. Then, type `cd your/directory/here` where `your/directory/here` is the location of your folder. Once you have done so, run `jupyter lab` to start a Jupyter Lab session. On the left, there should be a tabular view of the files in your current directory. The directory on the left of your Jupyter Lab session should like the following:
 
 ![](./photos/journalSelect.png "Jupyter Lab Notebook")
 
-Open the file with the .ipynb extension, `diamondBook.ipynb`. If you have not downloaded and placed the it in the folder created, it can be downloaded [here](./code/diamondBook.ipynb) You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
+Open the file with the .ipynb extension, `diamondBook.ipynb`.You should now be greeted by code on the right. From left to right on the following figure, the basic controls for manipulating the notebook are as follows:
 
 ![](./photos/controls.png "Controls")
 
